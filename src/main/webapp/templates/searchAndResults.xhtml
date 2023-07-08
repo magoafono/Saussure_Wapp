@@ -1,0 +1,1007 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<p:layout>
+
+		<!-- <p:layoutUnit header="SEARCH BOX" position="north" size="350" resizable="true" collapsible="true"> -->
+		<p:layoutUnit styleClass="nestedUnit" position="center"
+			collapsible="false" resizable="true">
+
+			<p:tabView styleClass="nestedUnit" id="tabView">
+
+				<p:tab id="sansTab" title="Sanscrit">
+					<p:panelGrid styleClass="nestedUnit" id="sansPanelSearch">
+						<p:row>
+							<p:column>
+								<p:panel styleClass="nestedUnit" id="sanspnl"
+									header="Word Index" toggleable="true" closable="true"
+									toggleSpeed="500" closeSpeed="2000" widgetVar="arpanel">
+									<h:form>
+										<ui:include src="wordIndexSn.xhtml" />
+									</h:form>
+								</p:panel>
+							</p:column>
+							<p:column>
+								<h:form>
+									<p:panelGrid styleClass="borderUnit">
+										<f:facet name="header">
+											<p:row>
+												<p:column colspan="3">SEARCH</p:column>
+											</p:row>
+											<p:row>
+												<p:column>Word A</p:column>
+												<p:column>Word B</p:column>
+												<p:column>Word C</p:column>
+											</p:row>
+										</f:facet>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.termType0ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType1ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType2ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!--<f:selectItem itemLabel="root" itemValue="root" /> -->
+												</p:selectOneMenu>
+											</p:column>
+										</p:row>
+										<p:row>
+											<p:column>
+												<p:inputText id="queryterm0"
+													value="#{queryIndexBean.termValue0ar}"></p:inputText>
+												<p:watermark for="queryterm0" value="Search for..." />
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm1" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue1ar}"></p:inputText>
+												<!-- p:watermark for="queryterm1" value="Search for..." /-->
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm2" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue2ar}"></p:inputText>
+												<!-- p:watermark for="queryterm2" value="Search for..." /-->
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.pos0ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos1ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos2ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<p:row>
+											<p:column colspan="1">
+												<h:outputText value="Operator:" />
+											</p:column>
+											<p:column colspan="2">
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.opTypear}">
+													<f:selectItem itemLabel="AND" itemValue="true" />
+													<f:selectItem itemLabel="OR" itemValue="false" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<f:facet name="footer">
+											<p:row>
+												<p:column colspan="1">
+													<h:commandButton action="#{queryIndexBean.search}"
+														value="Search" />
+												</p:column>
+												<p:column colspan="1">
+													<!-- <h:outputText value="Ordered: " />  -->
+													<!-- <p:selectBooleanCheckbox /> -->
+													<h:commandButton disabled="true"
+														action="#{queryIndexBean.printStatusAr}"
+														value="Save parameters" />
+												</p:column>
+												<p:column>
+													<h:commandButton action="#{queryIndexBean.arclear}"
+														value="Clear Parameters" />
+												</p:column>
+											</p:row>
+										</f:facet>
+									</p:panelGrid>
+								</h:form>
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:tab>
+
+
+				<p:tab id="latTab" title="Latin">
+					<p:panelGrid styleClass="nestedUnit" id="latPanelSearch">
+						<p:row>
+							<p:column>
+								<p:panel styleClass="nestedUnit" id="latpnl" header="Word Index"
+									toggleable="true" closable="true" toggleSpeed="500"
+									closeSpeed="2000" widgetVar="arpanel">
+									<h:form>
+										<ui:include src="wordIndexLat.xhtml" />
+									</h:form>
+								</p:panel>
+							</p:column>
+							<p:column>
+								<h:form>
+									<p:panelGrid styleClass="borderUnit">
+										<f:facet name="header">
+											<p:row>
+												<p:column colspan="3">SEARCH</p:column>
+											</p:row>
+											<p:row>
+												<p:column>Word A</p:column>
+												<p:column>Word B</p:column>
+												<p:column>Word C</p:column>
+											</p:row>
+										</f:facet>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.termType0ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType1ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType2ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!--<f:selectItem itemLabel="root" itemValue="root" /> -->
+												</p:selectOneMenu>
+											</p:column>
+										</p:row>
+										<p:row>
+											<p:column>
+												<p:inputText id="queryterm0"
+													value="#{queryIndexBean.termValue0ar}"></p:inputText>
+												<p:watermark for="queryterm0" value="Search for..." />
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm1" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue1ar}"></p:inputText>
+												<!-- p:watermark for="queryterm1" value="Search for..." /-->
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm2" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue2ar}"></p:inputText>
+												<!-- p:watermark for="queryterm2" value="Search for..." /-->
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.pos0ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos1ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos2ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<p:row>
+											<p:column colspan="1">
+												<h:outputText value="Operator:" />
+											</p:column>
+											<p:column colspan="2">
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.opTypear}">
+													<f:selectItem itemLabel="AND" itemValue="true" />
+													<f:selectItem itemLabel="OR" itemValue="false" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<f:facet name="footer">
+											<p:row>
+												<p:column colspan="1">
+													<h:commandButton action="#{queryIndexBean.search}"
+														value="Search" />
+												</p:column>
+												<p:column colspan="1">
+													<!-- <h:outputText value="Ordered: " />  -->
+													<!-- <p:selectBooleanCheckbox /> -->
+													<h:commandButton disabled="true"
+														action="#{queryIndexBean.printStatusAr}"
+														value="Save parameters" />
+												</p:column>
+												<p:column>
+													<h:commandButton action="#{queryIndexBean.arclear}"
+														value="Clear Parameters" />
+												</p:column>
+											</p:row>
+										</f:facet>
+									</p:panelGrid>
+								</h:form>
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:tab>
+
+
+
+				<p:tab id="greekTab" title="Grec">
+
+					<p:panelGrid styleClass="nestedUnit" id="grPanelSearch">
+						<p:row>
+							<!-- <p:layout>  -->
+							<!-- <p:layoutUnit size="150" styleClass="nestedUnit" position="west" header="Word Index" resizable="true" closable="true" collapsible="true">  -->
+							<p:column>
+								<p:panel styleClass="nestedUnit" id="grpnl" header="Word Index"
+									toggleable="true" closable="true" toggleSpeed="500"
+									closeSpeed="2000" widgetVar="grpanel">
+									<h:form>
+										<ui:include src="wordIndexGr.xhtml" />
+									</h:form>
+								</p:panel>
+							</p:column>
+							<!-- </p:layoutUnit>  -->
+							<!-- <p:layoutUnit styleClass="nestedUnit" position="center" resizable="true"> -->
+							<p:column>
+								<h:form>
+									<p:panelGrid styleClass="borderUnit">
+										<f:facet name="header">
+
+											<p:row>
+												<p:column colspan="3">SEARCH GREEK</p:column>
+											</p:row>
+											<p:row>
+												<p:column>Word A</p:column>
+												<p:column>Word B</p:column>
+												<p:column>Word C</p:column>
+											</p:row>
+										</f:facet>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.termType0ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType1ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType2ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!--<f:selectItem itemLabel="root" itemValue="root" /> -->
+												</p:selectOneMenu>
+											</p:column>
+										</p:row>
+										<p:row>
+											<p:column>
+												<p:inputText id="queryterm0"
+													value="#{queryIndexBean.termValue0ar}"></p:inputText>
+												<p:watermark for="queryterm0" value="Search for..." />
+											</p:column>
+											<p:column>
+												<p:inputText disabled="true" readonly="true" id="queryterm1"
+													value="#{queryIndexBean.termValue1ar}"></p:inputText>
+												<p:watermark for="queryterm1" value="Search for..." />
+											</p:column>
+											<p:column>
+												<p:inputText disabled="true" readonly="true" id="queryterm2"
+													value="#{queryIndexBean.termValue2ar}"></p:inputText>
+												<p:watermark for="queryterm2" value="Search for..." />
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.pos0ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos1ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos2ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<p:row>
+											<p:column colspan="1">
+												<h:outputText value="Operator:" />
+											</p:column>
+											<p:column colspan="2">
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.opTypear}">
+													<f:selectItem itemLabel="AND" itemValue="true" />
+													<f:selectItem itemLabel="OR" itemValue="false" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<f:facet name="footer">
+											<p:row>
+												<p:column colspan="1">
+													<h:commandButton action="#{queryIndexBean.search}"
+														value="Search" />
+												</p:column>
+												<p:column colspan="1">
+													<!-- <h:outputText value="Ordered: " />  -->
+													<!-- <p:selectBooleanCheckbox /> -->
+													<h:commandButton disabled="true"
+														action="#{queryIndexBean.printStatusAr}"
+														value="Save parameters" />
+												</p:column>
+												<p:column>
+													<h:commandButton action="#{queryIndexBean.arclear}"
+														value="Clear Parameters" />
+												</p:column>
+											</p:row>
+										</f:facet>
+
+									</p:panelGrid>
+								</h:form>
+							</p:column>
+							<!-- </p:layoutUnit> -->
+							<!-- </p:layout>  -->
+						</p:row>
+					</p:panelGrid>
+				</p:tab>
+
+				<p:tab id="GermanTab" title="Allemand">
+					<p:panelGrid styleClass="nestedUnit" id="alPanelSearch">
+						<p:row>
+							<p:column>
+								<p:panel styleClass="nestedUnit" id="alpnl" header="Word Index"
+									toggleable="true" closable="true" toggleSpeed="500"
+									closeSpeed="2000" widgetVar="arpanel">
+									<h:form>
+										<ui:include src="wordIndexGe.xhtml" />
+									</h:form>
+								</p:panel>
+							</p:column>
+							<p:column>
+								<h:form>
+									<p:panelGrid styleClass="borderUnit">
+										<f:facet name="header">
+											<p:row>
+												<p:column colspan="3">SEARCH</p:column>
+											</p:row>
+											<p:row>
+												<p:column>Word A</p:column>
+												<p:column>Word B</p:column>
+												<p:column>Word C</p:column>
+											</p:row>
+										</f:facet>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.termType0ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType1ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType2ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!--<f:selectItem itemLabel="root" itemValue="root" /> -->
+												</p:selectOneMenu>
+											</p:column>
+										</p:row>
+										<p:row>
+											<p:column>
+												<p:inputText id="queryterm0"
+													value="#{queryIndexBean.termValue0ar}"></p:inputText>
+												<p:watermark for="queryterm0" value="Search for..." />
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm1" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue1ar}"></p:inputText>
+												<!-- p:watermark for="queryterm1" value="Search for..." /-->
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm2" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue2ar}"></p:inputText>
+												<!-- p:watermark for="queryterm2" value="Search for..." /-->
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.pos0ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos1ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos2ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<p:row>
+											<p:column colspan="1">
+												<h:outputText value="Operator:" />
+											</p:column>
+											<p:column colspan="2">
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.opTypear}">
+													<f:selectItem itemLabel="AND" itemValue="true" />
+													<f:selectItem itemLabel="OR" itemValue="false" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<f:facet name="footer">
+											<p:row>
+												<p:column colspan="1">
+													<h:commandButton action="#{queryIndexBean.search}"
+														value="Search" />
+												</p:column>
+												<p:column colspan="1">
+													<!-- <h:outputText value="Ordered: " />  -->
+													<!-- <p:selectBooleanCheckbox /> -->
+													<h:commandButton disabled="true"
+														action="#{queryIndexBean.printStatusAr}"
+														value="Save parameters" />
+												</p:column>
+												<p:column>
+													<h:commandButton action="#{queryIndexBean.arclear}"
+														value="Clear Parameters" />
+												</p:column>
+											</p:row>
+										</f:facet>
+									</p:panelGrid>
+								</h:form>
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:tab>
+
+				<p:tab id="FrenchTab" title="Français">
+					<p:panelGrid styleClass="nestedUnit" id="frPanelSearch">
+						<p:row>
+							<p:column>
+								<p:panel styleClass="nestedUnit" id="frpnl" header="Word Index"
+									toggleable="true" closable="true" toggleSpeed="500"
+									closeSpeed="2000" widgetVar="arpanel">
+									<h:form>
+										<ui:include src="wordIndexFr.xhtml" />
+									</h:form>
+								</p:panel>
+							</p:column>
+							<p:column>
+								<h:form>
+									<p:panelGrid styleClass="borderUnit">
+										<f:facet name="header">
+											<p:row>
+												<p:column colspan="3">SEARCH</p:column>
+											</p:row>
+											<p:row>
+												<p:column>Word A</p:column>
+												<p:column>Word B</p:column>
+												<p:column>Word C</p:column>
+											</p:row>
+										</f:facet>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.termType0ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType1ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType2ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!--<f:selectItem itemLabel="root" itemValue="root" /> -->
+												</p:selectOneMenu>
+											</p:column>
+										</p:row>
+										<p:row>
+											<p:column>
+												<p:inputText id="queryterm0"
+													value="#{queryIndexBean.termValue0ar}"></p:inputText>
+												<p:watermark for="queryterm0" value="Search for..." />
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm1" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue1ar}"></p:inputText>
+												<!-- p:watermark for="queryterm1" value="Search for..." /-->
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm2" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue2ar}"></p:inputText>
+												<!-- p:watermark for="queryterm2" value="Search for..." /-->
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.pos0ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos1ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos2ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<p:row>
+											<p:column colspan="1">
+												<h:outputText value="Operator:" />
+											</p:column>
+											<p:column colspan="2">
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.opTypear}">
+													<f:selectItem itemLabel="AND" itemValue="true" />
+													<f:selectItem itemLabel="OR" itemValue="false" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<f:facet name="footer">
+											<p:row>
+												<p:column colspan="1">
+													<h:commandButton action="#{queryIndexBean.search}"
+														value="Search" />
+												</p:column>
+												<p:column colspan="1">
+													<!-- <h:outputText value="Ordered: " />  -->
+													<!-- <p:selectBooleanCheckbox /> -->
+													<h:commandButton disabled="true"
+														action="#{queryIndexBean.printStatusAr}"
+														value="Save parameters" />
+												</p:column>
+												<p:column>
+													<h:commandButton action="#{queryIndexBean.arclear}"
+														value="Clear Parameters" />
+												</p:column>
+											</p:row>
+										</f:facet>
+									</p:panelGrid>
+								</h:form>
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:tab>
+
+
+				<p:tab id="recTab" title="Terme Reconstruit">
+					<p:panelGrid styleClass="nestedUnit" id="recPanelSearch">
+						<p:row>
+							<p:column>
+								<p:panel styleClass="nestedUnit" id="recpnl" header="Word Index"
+									toggleable="true" closable="true" toggleSpeed="500"
+									closeSpeed="2000" widgetVar="arpanel">
+									<h:form>
+										<ui:include src="wordIndexFrc.xhtml" />
+									</h:form>
+								</p:panel>
+							</p:column>
+							<p:column>
+								<h:form>
+									<p:panelGrid styleClass="borderUnit">
+										<f:facet name="header">
+											<p:row>
+												<p:column colspan="3">SEARCH</p:column>
+											</p:row>
+											<p:row>
+												<p:column>Word A</p:column>
+												<p:column>Word B</p:column>
+												<p:column>Word C</p:column>
+											</p:row>
+										</f:facet>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.termType0ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType1ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!-- <f:selectItem itemLabel="root" itemValue="root" />  -->
+												</p:selectOneMenu>
+											</p:column>
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.termType2ar}">
+													<f:selectItem itemLabel="form" itemValue="form" />
+													<f:selectItem itemLabel="lemma" itemValue="lemma" />
+													<!--<f:selectItem itemLabel="root" itemValue="root" /> -->
+												</p:selectOneMenu>
+											</p:column>
+										</p:row>
+										<p:row>
+											<p:column>
+												<p:inputText id="queryterm0"
+													value="#{queryIndexBean.termValue0ar}"></p:inputText>
+												<p:watermark for="queryterm0" value="Search for..." />
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm1" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue1ar}"></p:inputText>
+												<!-- p:watermark for="queryterm1" value="Search for..." /-->
+											</p:column>
+											<p:column>
+												<p:inputText id="queryterm2" readonly="true"
+													style="color: #DCDAD1"
+													value="#{queryIndexBean.termValue2ar}"></p:inputText>
+												<!-- p:watermark for="queryterm2" value="Search for..." /-->
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<p:selectOneMenu value="#{queryIndexBean.pos0ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos1ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+											<p:column>
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.pos2ar}">
+													<f:selectItem itemLabel="Every Status" itemValue="ANY" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<p:row>
+											<p:column colspan="1">
+												<h:outputText value="Operator:" />
+											</p:column>
+											<p:column colspan="2">
+												<p:selectOneMenu disabled="true"
+													value="#{queryIndexBean.opTypear}">
+													<f:selectItem itemLabel="AND" itemValue="true" />
+													<f:selectItem itemLabel="OR" itemValue="false" />
+												</p:selectOneMenu>
+											</p:column>
+
+										</p:row>
+
+										<f:facet name="footer">
+											<p:row>
+												<p:column colspan="1">
+													<h:commandButton action="#{queryIndexBean.search}"
+														value="Search" />
+												</p:column>
+												<p:column colspan="1">
+													<!-- <h:outputText value="Ordered: " />  -->
+													<!-- <p:selectBooleanCheckbox /> -->
+													<h:commandButton disabled="true"
+														action="#{queryIndexBean.printStatusAr}"
+														value="Save parameters" />
+												</p:column>
+												<p:column>
+													<h:commandButton action="#{queryIndexBean.arclear}"
+														value="Clear Parameters" />
+												</p:column>
+											</p:row>
+										</f:facet>
+									</p:panelGrid>
+								</h:form>
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:tab>
+				<p:tab title="Recherche Composite" disabled="true">
+					<h:form>
+
+						<p:panelGrid>
+							<p:row>
+
+								<p:column>
+									<p:panelGrid>
+										<f:facet name="header">
+											<p:row>
+												<p:column colspan="3">French Search Parameters</p:column>
+											</p:row>
+											<p:row>
+												<p:column>Feature</p:column>
+												<p:column>Word</p:column>
+												<p:column>Status</p:column>
+											</p:row>
+										</f:facet>
+
+										<p:row>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termType0ar}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termValue0ar}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.pos0ar}" />
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termType1ar}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termValue1ar}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.pos1ar}" />
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termType2ar}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termValue2ar}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.pos2ar}" />
+											</p:column>
+										</p:row>
+
+										<f:facet name="footer">
+											<p:row>
+												<p:column colspan="3">
+													<h:outputText
+														value="the intratext combine operation is #{queryIndexBean.opTypegr}" />
+												</p:column>
+											</p:row>
+										</f:facet>
+
+									</p:panelGrid>
+								</p:column>
+
+								<p:column>
+									<p:panelGrid columns="1">
+										<p:selectOneMenu value="#{queryIndexBean.operator}">
+											<f:selectItem itemLabel="AND" itemValue="true" />
+											<f:selectItem itemLabel="OR" itemValue="false" />
+										</p:selectOneMenu>
+										<h:commandButton action="#{queryIndexBean.search}"
+											value="Search" />
+
+									</p:panelGrid>
+								</p:column>
+
+								<p:column>
+									<p:panelGrid>
+										<f:facet name="header">
+											<p:row>
+												<p:column colspan="3">Greek Search Parameters</p:column>
+											</p:row>
+											<p:row>
+												<p:column>Feature</p:column>
+												<p:column>Word</p:column>
+												<p:column>Status</p:column>
+											</p:row>
+										</f:facet>
+										<p:row>
+
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termType0gr}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termValue0gr}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.pos0gr}" />
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termType1gr}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termValue1gr}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.pos1gr}" />
+											</p:column>
+										</p:row>
+
+										<p:row>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termType2gr}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.termValue2gr}" />
+											</p:column>
+											<p:column>
+												<h:outputText value="#{queryIndexBean.pos2gr}" />
+											</p:column>
+										</p:row>
+
+										<f:facet name="footer">
+											<p:row>
+												<p:column colspan="3">
+													<h:outputText
+														value="the intratext combine operation is #{queryIndexBean.opTypegr}" />
+												</p:column>
+											</p:row>
+										</f:facet>
+
+									</p:panelGrid>
+								</p:column>
+
+							</p:row>
+						</p:panelGrid>
+
+					</h:form>
+				</p:tab>
+
+			</p:tabView>
+
+
+		</p:layoutUnit>
+
+		<p:layoutUnit resizable="true" maxSize="300" position="south"
+			styleClass="nestedUnit" style="text-align:left;">
+
+			<p:outputPanel id="resultsViewer">
+				<p:panel header="results" toggleable="true"
+					closable="false" toggleSpeed="500" widgetVar="panel">
+					<p:dataList var="searchResult" value="#{queryIndexBean.listOfRefs}">
+						<p:column>
+							<h:form>
+								<p:commandLink value="#{searchResult.ref}" style="text-decoration: bold"
+									action="#{commentBean.selectedPericopeByRef}" ajax="false" >
+									<f:setPropertyActionListener value="#{searchResult.ref}"
+										target="#{commentBean.pericopeRef}" />
+								</p:commandLink>
+							</h:form>
+							<h:outputText escape="false" value="#{searchResult.text}" />
+						</p:column>
+					</p:dataList>
+				</p:panel>
+			</p:outputPanel>
+
+		</p:layoutUnit>
+
+	</p:layout>
+
+
+</ui:composition>

@@ -1,0 +1,47 @@
+/*!
+ * jQuery ClassyLoupe
+ * http://www.class.pm/projects/jquery/classyloupe
+ *
+ * Copyright 2011 - 2013, Class.PM www.class.pm
+ * Written by Marius Stanciu - Sergiu <marius@picozu.com>
+ * Licensed under the GPL Version 3 license.
+ * Version 1.1.1
+ *
+ */
+
+ .classyloupe {
+    position: absolute;
+    display: none;
+    border: 1px solid #000;
+    background-color: transparent;
+    z-index: 1000;
+    cursor: url('data:image/gif;base64,R0lGODlhAQABAPcAAAAAAIAAAACAAICAAAAAgIAAgACAgMDAwMDcwKbK8EAgAGAgAIAgAKAgAMAgAOAgAABAACBAAEBAAGBAAIBAAKBAAMBAAOBAAABgACBgAEBgAGBgAIBgAKBgAMBgAOBgAACAACCAAECAAGCAAICAAKCAAMCAAOCAAACgACCgAECgAGCgAICgAKCgAMCgAOCgAADAACDAAEDAAGDAAIDAAKDAAMDAAODAAADgACDgAEDgAGDgAIDgAKDgAMDgAODgAAAAQCAAQEAAQGAAQIAAQKAAQMAAQOAAQAAgQCAgQEAgQGAgQIAgQKAgQMAgQOAgQABAQCBAQEBAQGBAQIBAQKBAQMBAQOBAQABgQCBgQEBgQGBgQIBgQKBgQMBgQOBgQACAQCCAQECAQGCAQICAQKCAQMCAQOCAQACgQCCgQECgQGCgQICgQKCgQMCgQOCgQADAQCDAQEDAQGDAQIDAQKDAQMDAQODAQADgQCDgQEDgQGDgQIDgQKDgQMDgQODgQAAAgCAAgEAAgGAAgIAAgKAAgMAAgOAAgAAggCAggEAggGAggIAggKAggMAggOAggABAgCBAgEBAgGBAgIBAgKBAgMBAgOBAgABggCBggEBggGBggIBggKBggMBggOBggACAgCCAgECAgGCAgICAgKCAgMCAgOCAgACggCCggECggGCggICggKCggMCggOCggADAgCDAgEDAgGDAgIDAgKDAgMDAgODAgADggCDggEDggGDggIDggKDggMDggODggAAAwCAAwEAAwGAAwIAAwKAAwMAAwOAAwAAgwCAgwEAgwGAgwIAgwKAgwMAgwOAgwABAwCBAwEBAwGBAwIBAwKBAwMBAwOBAwABgwCBgwEBgwGBgwIBgwKBgwMBgwOBgwACAwCCAwECAwGCAwICAwKCAwMCAwOCAwACgwCCgwECgwGCgwICgwKCgwMCgwOCgwADAwCDAwEDAwGDAwIDAwKDAwP/78KCgpICAgP8AAAD/AP//AAAA//8A/wD//////yH5BAEAAPkALAAAAAABAAEAAAgEAPMFBAA7'), none;
+    margin: 0px;
+    padding: 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.overlay {
+    position: absolute;
+    display: none;
+    z-index: 999;
+    background-color: #000;
+}
+.overlay_img {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAwklEQVRYhe3XXQqDMBhE0dtsIKvNwrOC+mIhTfNrlAzlm0eR4ShomFcI4U2WGGN+6Sfe++49d/S5O8tKWe37AqrhIAEq4uAEquIAnDIOCh/JStkTD9sE7sZB4w0q4KACVMFBAaiEgwyohoMEqIiDE6iKA3DKOBj4Uc+UPfGwQ8Cdx2EXuPusbgJ346ABVMBBBaiCA9sktknmyj6xTXK1zDbJalkrtklGykqxTTJTlsY2yZUysE2yVjYa2yS1sl7+cpMcegPyrqBRcaoAAAAASUVORK5CYII=');
+}
+.overlay_white {
+    background-color: #fff;
+}		
+.shadow {
+    -webkit-box-shadow: 5px 5px 10px #000;
+    -moz-box-shadow: 5px 5px 10px #000;
+    box-shadow: 5px 5px 10px #000;
+}
+.glossy {
+    display: block;
+    margin: 0px;
+    background: -o-linear-gradient(top ,rgba(255,255,255,0.6) ,rgba(255,255,255,0));
+    background: -moz-linear-gradient(top, rgba(255,255,255,.6) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.6)), color-stop(100%,rgba(255,255,255,0)));
+}

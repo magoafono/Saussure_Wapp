@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div align="left">
+		<p:dataTable value="#{queryIndexBean.frcindex}" var="word"
+			paginator="true" rows="10" effectSpeed="fast"
+			paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15,50" itemType="none">
+			<!-- 
+        <f:facet name="header">
+            Index of Words
+        </f:facet>
+		 -->
+			<p:column>
+				<p:commandLink action="#{queryIndexBean.searchOnClick}" title="View"
+					ajax="false">
+					<p:graphicImage value="#{resource['images/search.png']}" />
+					<f:setPropertyActionListener value="#{word.value}"
+						target="#{queryIndexBean.selectedWord}" />
+				</p:commandLink>
+			</p:column>
+			<p:column filterBy="#{word.value}" filterMatchMode="contains"
+				filterMaxLength="10" filterStyle="width:80px">
+				<h:outputText value="#{word.value}" style="margin-left:10px" />
+			</p:column>
+			<p:column>
+				<h:outputText value="#{word.freq}" style="margin-left:10px" />
+			</p:column>
+		</p:dataTable>
+	</div>
+</ui:composition>

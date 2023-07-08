@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it">
+	<head>
+		<title>jQuery gzoom plugin</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="Jquery gZoom plugin"/>
+		<meta name="keywords" content="jquery, zoom, magnify" />
+		<meta name="author" content="Giovanni Battista 'gianiaz' Lenoci" />
+
+		<link rel="stylesheet" href="http://localhost:8080/Saussure_Wapp/resources/css/jquery.gzoom.css" type="text/css"  />
+
+		<base href="http://lab.gianiaz.com/jquery/gzoom/" />
+
+		<style type="text/css">
+		/* page styles */
+		a:focus {
+			outline:none;
+		}
+		a {
+			color: #ff6600;
+		}
+		body {
+			font-family: Verdana, sans-serif;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+			background: #fff;
+			color: #000;
+			font-size: 62.5%;
+		}
+		#wrapp {
+			width: 90%;
+			text-align: left;
+			font-size: 1.1em;
+			margin: 1em auto;
+			padding: 0;
+			color: #000;
+		}
+		h1 {
+			padding: 1em 0 0.8em 0;
+			border-bottom: 1px solid silver;
+			margin: 0 0 1em 0;
+			font: bold 1.6em Verdana;
+			letter-spacing: -1px;
+		}
+		hr {
+			border:0px;
+			border-bottom: 1px solid silver;
+			margin:0px;
+		}
+		img {
+			border:0px;
+		}
+		pre {
+			font-size:12px;
+		}
+		</style>
+
+	</head>
+	<body>
+
+		<div id="wrapp">
+			<a href="index.html"><img src="images/uk.png" alt="English" title="English Version" /></a>
+			<hr />
+			<h1>jQuery gzoom plugin</h1>
+
+			<div id="zoom01" class="zoom">
+				<img src="http://localhost:8080/Saussure_Wapp/img/0r.jpg" alt="colline toscane" title="Colline Toscane (SI) - Italy - 2007 &copy; Giovanni Battista Lenoci" />
+			</div>
+
+			<div id="zoom02" class="zoom zoom_no_lbox">
+				<img src="http://localhost:8080/Saussure_Wapp/img/100r.jpg" alt="Castello S.Severina(KR)" title="Castello di S.Severina (KR) - Italy - 2008 &copy; Giovanni Battista Lenoci" />
+			</div>
+
+			<div id="zoom03" class="zoom zoom_no_lbox">
+				<img src="http://localhost:8080/Saussure_Wapp/img/101r.jpg" alt="montagne valtellinesi" title="Vista delle montagne Valtellinesi da Boirolo (SO) - Italy - 2008 &copy; Giovanni Battista Lenoci" />
+			</div>
+
+			<div id="zoom04" class="zoom">
+				<img src="http://localhost:8080/Saussure_Wapp/img/102r.jpg" alt="amsterdam" title="Amsterdam - Holland - 2006 &copy; Giovanni Battista Lenoci" />
+			</div>
+
+			<br style="clear:both" />
+
+			<div id="instructions">
+				<div style="float:left;width:300px;margin-right:10px">
+					<pre>
+$("#zoom01").gzoom({sW: 300,
+										sH: 225,
+										lW: 1400,
+										lH: 1050,
+										lighbox : false
+										});
+					</pre>
+				</div>
+				<div style="float:left;width:610px;margin-right:10px">
+					<pre>
+$(".zoom_no_lbox").gzoom({sW: 300,
+													sH: 225,
+													lW: 1024,
+													lH: 768,
+													lightbox: true
+												 });
+					</pre>
+				</div>
+				<div style="float:left;width:300px;margin-right:10px">
+					<pre>
+$("#zoom04").gzoom({sW: 300,
+										sH: 225,
+										lW: 1024,
+										lH: 768,
+										lightbox: true,
+										zoomIcon: 'images/gtk-zoom-in.png'
+										});
+					</pre>
+				</div>
+			</div>
+			<br style="clear:both" />
+
+			<p>Basato sul lavoro di <a href="http://www.gcmingati.net/wordpress/wp-content/lab/jquery/minizoompan/">giancarlo mingati</a> e <a href="http://leandrovieira.com/projects/jquery/lightbox/">leandro vieira</a></p>
+
+			<p>Funzionalità:</p>
+			<ul>
+				<li>Click su più e meno per effettuare lo zoom della foto</li>
+				<li>Spostamento dello "slider" tramite drag &amp; drop</li>
+				<li>Supporto per il plugin mousewheel per effettuare lo zoom con la rotellina del mouse</li>
+				<li>Spostamento della visuale seguendo il movimento del mouse sopra la foto</li>
+				<li>Visualizazzione in formato lightbox della foto intera</li>
+				<li>Stile ereditato dal framework di jquery.ui</li>
+			</ul>
+
+			<p>Dipendenze:</p>
+			<ul>
+				<li>jquery 1.3.2</li>
+				<li>ui.core.js</li>
+				<li>ui.slider.js</li>
+				<li>jquery.gzoom.js :-)</li>
+			</ul>
+
+			<p>Opzionale:</p>
+			<ul>
+				<li>jquery.mousewheel.js</li>
+			</ul>
+
+			<p>Download:</p>
+			<ul>
+				<li><a href="jquery/jquery.gzoom.js">gzoom.js</a></li>
+				<li><a href="css/jquery.gzoom.css">gzoom.css</a></li>
+			</ul>
+
+		</div>
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			try {
+				var pageTracker = _gat._getTracker("UA-930845-2");
+				pageTracker._trackPageview();
+			} catch(err) {}
+		</script>
+		<script type="text/javascript" src="http://localhost:8080/Saussure_Wapp/resources/javascript/jquery-1.3.2.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Saussure_Wapp/resources/javascript/ui.core.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Saussure_Wapp/resources/javascript/ui.slider.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/Saussure_Wapp/resources/javascript/jquery.mousewheel.js"></script> <!-- optional -->
+		<script type="text/javascript" src="http://localhost:8080/Saussure_Wapp/resources/javascript/jquery.gzoom.js"></script>
+
+		<script type= "text/javascript">
+			/*<![CDATA[*/
+			$(function() {
+				$("#zoom01").gzoom({
+						sW: 300,
+						sH: 225,
+						lW: 1400,
+						lH: 1050,
+						lighbox : false
+				});
+				$(".zoom_no_lbox").gzoom({
+						sW: 300,
+						sH: 225,
+						lW: 1024,
+						lH: 768,
+						lightbox: true
+				});
+				$("#zoom04").gzoom({
+						sW: 300,
+						sH: 225,
+						lW: 1024,
+						lH: 768,
+						lightbox: true,
+						zoomIcon: 'images/gtk-zoom-in.png'
+				});
+			});
+			/*]]>*/
+		</script>
+	</body>
+</html>
+

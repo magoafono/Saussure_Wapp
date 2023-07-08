@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dataTable id="dataTable" var="pericope"
+		value="#{parallelViewBean.pericopesBya}" paginator="true" rows="1"
+		paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="1,10,50,200" >
+
+		<p:ajax event="page" oncomplete="dynamic_zoom()"/>
+		<f:facet name="header">
+
+		</f:facet>
+
+		<p:column id="folioNum" filterBy="#{pericope.atext.reference}"
+			filterMatchMode="contains" filterMaxLength="3"
+			filterStyle="float:left; width:40px;">
+			<f:facet name="header">
+                	Folio
+           		</f:facet>
+
+			<h:outputText value="#{pericope.atext.reference}" />
+
+			<f:facet name="footer">
+                Folio
+            </f:facet>
+		</p:column>
+
+		<p:column headerText="Transcription">
+			<h:outputText escape="false" value="#{pericope.atext.content}" />
+		</p:column>
+
+		<p:column style="width:300px;" headerText="Image">
+			<div class="folio_img">
+				<a class="fancybox" rel="group"
+					href="img/#{pericope.atext.reference}.jpg"> <img
+					src="img/#{pericope.atext.reference}.jpg" title="#{pericope.atext.reference}" alt="#{pericope.atext.reference}"
+					class="loupe1" onmouseover="dynamic_zoom(); return false;" />
+				</a>
+			</div>
+		</p:column>
+
+		<p:column id="folioNote" filterBy="#{pericope.btext.reference}"
+			filterMatchMode="contains" headerText="Notes" footerText="Notes">
+			<h:outputText escape="false" value="#{pericope.btext.reference}" />
+		</p:column>
+
+		<p:column headerText="Select folio" style="width:40px">
+			<h:panelGrid columns="1" styleClass="nestedUnit" cellpadding="2">
+				<p:commandButton id="selectButton" value="Select"
+					icon="ui-icon ui-icon-circle-arrow-w" title="click to select">
+					<f:setPropertyActionListener value="#{pericope}"
+						target="#{commentBean.selectedPericope}" />
+				</p:commandButton>
+			</h:panelGrid>
+		</p:column>
+
+		<f:facet name="footer">
+		</f:facet>
+
+	</p:dataTable>
+
+</ui:composition>

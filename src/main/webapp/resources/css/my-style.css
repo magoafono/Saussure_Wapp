@@ -1,0 +1,199 @@
+h1 {
+	display: none;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.ui-widget,.ui-widget .ui-widget {
+	font-size: 12px !important;
+}
+
+.top-menu-layout {
+	padding-bottom: 5ex;
+}
+
+.top-menu-layout>div+div {
+	height: 7ex;
+}
+
+.top-menu {
+	height: 5ex;
+}
+
+.annotazioni {
+	color: #c9c9c9;
+}
+
+.annotazioni-2l {
+	color: #c9c9c9;
+}
+
+.center {
+	align: center;
+}
+
+.normal {
+	text-align: inherit;
+}
+
+.arabic {
+	direction: rtl;
+	text-align: right;
+}
+
+.textRight {
+	border: 0px gray dotted;
+}
+
+.textLeft {
+	border: 0px gray dotted;
+	width: 60%;
+}
+
+.integration {
+	color: #777777;
+	font-weight: 500;
+}
+
+div.folio p {
+	text-align: justify;
+	line-height: 250%;
+}
+
+.folio_img {
+	width: 100%;
+}
+
+#form\:folio-img>a>img {
+	width: 100%;
+}
+
+.folio_img>a>img {
+	width: 100%;
+}
+
+.folio_img>img {
+	width: 100%;
+}
+
+.greek {
+	background-color: transparent;
+}
+
+.symbol {
+	
+}
+
+.symbolgreek {
+	
+}
+
+.ipa {
+	background-color: transparent;
+}
+
+.notrec {
+	background-color: transparent;
+}
+
+.legenda {
+	width: 40%;
+	border: 0px gray dotted;
+}
+
+.sottolineato {
+	text-decoration: underline;
+}
+
+.pedice {
+	vertical-align: sub;
+}
+
+.apice {
+	vertical-align: super;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td {
+	border: 0px black solid;
+}
+
+caption {
+	color: blue;
+	font-style: italic;
+}
+
+body {
+	font-size: 14 px;
+	font-family: arial, sans-serif;
+}
+
+h1 {
+	color: blue;
+}
+
+div.folio_recto p {
+	text-align: justify;
+	line-height: 250%;
+}
+
+.IPAKiel {
+	/*background-color: blue;*/
+	/*color: red;*/
+	background-color: transparent;
+}
+
+.underline_1 {
+	/*text-decoration: underline;*/
+	font-style: italic;
+}
+
+.sub {
+	vertical-align: sub;
+}
+
+.sup {
+	vertical-align: super;
+}
+
+.comment_text {
+	font-style: italic;
+	font-size: 0.8em;
+	color: #ccc;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.nota_in_testo { 
+	color: #ffffff; 
+	display: none;
+}
+
+.nota {
+	background-color: #E5E9EE;
+	color: #bbb; 
+	display: none;
+}
+
+.highlight {
+	background-color: #FFC125;
+}
+
+.paper {
+	background-color: #ffffff;
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom : 3ex;
+	padding : 2ex;
+	-moz-box-shadow: 3px 3px 5px 6px #ccc;
+	-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+	box-shadow: 3px 3px 5px 6px #ccc;
+}

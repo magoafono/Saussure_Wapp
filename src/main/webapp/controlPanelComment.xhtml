@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="my-style.css" />
+	<h:outputStylesheet library="css" name="jquery.classyloupe.css" />
+	<h:outputStylesheet library="css" name="jquery.fancybox.css" />
+
+	<h:outputScript name="test.js" library="javascript"></h:outputScript>
+
+	<script type="text/javascript"
+		src="resources/javascript/jquery.classyloupe.js"></script>
+	<script type="text/javascript"
+		src="resources/javascript/jquery.mousewheel.js"></script>
+	<script type="text/javascript"
+		src="resources/javascript/jquery.easing.1.2.js"></script>
+
+	<script type="text/javascript"
+		src="resources/javascript/jquery.fancybox.pack.js"></script>
+	<title>#{msg['application']} Control Panel</title>
+</h:head>
+
+<h:body>
+
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" styleClass="top-menu-layout"
+			header="#{msg['application']} Web Application v.#{msg['version']}"
+			resizable="false" closable="false" collapsible="false">
+			<!-- <p:graphicImage value="#{resource['images/manoscritto-ara.jpg']}" /> -->
+			<h:form>
+				<p:menubar styleClass="top-menu">
+					<p:menuitem value="Home" url="controlPanel.xhtml" target="" />
+
+					<p:menuitem value="View resource" url="controlPanelView.xhtml"
+						target="" />
+
+					<p:menuitem value="Read all content"
+						url="controlPanelViewAll.xhtml" target="" />
+
+					<p:menuitem value="Search" url="controlPanelSearch.xhtml" target="" />
+
+					<!--p:menuitem value="Manage resources" url="." disabled="true" /-->
+
+					<!--p:menuitem value="Manage witnesses" url="." disabled="true" /-->
+
+					<p:menuitem value="Comment" url="." styleClass="ui-state-active"
+						target="" />
+					<p:menuitem value="Help" url="static/help.html" target="_window" />
+
+					<!--p:menuitem value="Linguistic Analysis" url="." disabled="true"
+						target="" /-->
+				</p:menubar>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="75"
+			header="#{msg['footer.message']}" resizable="false" closable="false"
+			collapsible="false">
+			<!-- <h:outputText value="Copyright &copy; - ILC-CNR" />  -->
+			<h:graphicImage height="15px"
+				value="#{resource['images/cc-by-sa_h30.png']}" />
+			<h:graphicImage height="15px"
+				value="#{resource['images/gpl-logo_h20.png']}" />
+			<h:outputText style="font-size:14px; font-style:italic"
+				value="ILC-CNR #{msg['footer.year']}" />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west">
+
+
+
+			<p:separator style="width:105px" id="separatorComment"></p:separator>
+
+			<!-- PROVATE CON PARAM e EXTERNAL CONTEXT IL LINK-->
+
+
+			<h:form id="commentsform">
+
+
+				<p:dataTable value="#{commentBean.pericopeComments}" var="comment"
+					paginator="true" rows="10" 
+					paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" itemType="none">
+
+					<f:facet name="header">
+           			 Comments
+        			</f:facet>
+
+					<p:column headerText="Snippet">
+						<h:outputText value="#{comment.snippet}" style="margin-left:3px" />
+					</p:column>
+					<p:column headerText="Type" id="typeCol" filterBy="#{comment.type}"
+						filterMatchMode="exact" filterMaxLength="3"
+						filterPosition="bottom" filterStyle="float:left; width:40px"
+						style="width:5%">
+						<h:outputText value="[#{comment.type}]" style="margin-left:3px" />
+					</p:column>
+					<p:column headerText="View">
+						<p:commandLink ajax="false"
+							action="#{commentBean.viewSelectedComment}" title="View Comment">
+							<p:graphicImage value="#{resource['images/search.png']}" />
+							<f:setPropertyActionListener value="#{comment}"
+								target="#{commentBean.selectedComment}" />
+						</p:commandLink>
+					</p:column>
+				</p:dataTable>
+				<p:separator></p:separator>
+			</h:form>
+
+
+		</p:layoutUnit>
+
+		<p:layoutUnit style="text-align:center;" styleClass="center"
+			position="center" id="centerUnit">
+
+
+			<h:form id="form">
+				<h:outputScript name="test.js" library="javascript"></h:outputScript>
+				<div align="center">
+					<h:panelGrid columnClasses="textLeft,textRight" columns="2">
+
+						<h:panelGroup
+							style="border-bottom: 0px red dotted; margin-right:15px">
+							<f:attribute name="layout" value="block"></f:attribute>
+							<h:outputText escape="false"
+								value="&lt;div id='arabictextarea' contenteditable='true'&gt; #{commentBean.arabictextarea} &lt;/div&gt;"></h:outputText>
+						</h:panelGroup>
+						<h:panelGroup layout="block" id="folio-img"
+							style="border-bottom: 0px red dotted; margin-right:15px;">
+							<a class="fancybox" rel="group"
+								href="img/#{commentBean.selectedPericope.atext.reference}.jpg">
+								<img
+								src="img/#{commentBean.selectedPericope.atext.reference}.jpg"
+								title="#{commentBean.selectedPericope.atext.reference}"
+								alt="#{commentBean.selectedPericope.atext.reference}"
+								class="loupe1" onmouseover="dynamic_zoom(); return false;" />
+							</a>
+						</h:panelGroup>
+
+						<h:inputHidden id="arabictext" value="#{commentBean.arabictext}"></h:inputHidden>
+						<h:inputHidden id="greektext" value="#{commentBean.greektext}"></h:inputHidden>
+
+						<h:panelGroup>
+							<hr />
+						</h:panelGroup>
+						<h:panelGroup>
+							<hr />
+						</h:panelGroup>
+
+						<h:outputText id="arabicselectedText"
+							value="#{commentBean.arabicselectedText}"></h:outputText>
+						<h:outputText id="greekselectedText"
+							value="#{commentBean.greekselectedText}"></h:outputText>
+
+						<h:panelGroup>
+							<hr />
+						</h:panelGroup>
+						<h:panelGroup>
+							<hr />
+						</h:panelGroup>
+
+						<h:commandButton onmousedown="arabicselection(); return false"
+							value="text selection" action="#{commentBean.arabicclick}"
+							disabled="#{not empty commentBean.selectedComment}"></h:commandButton>
+						<h:commandButton onmousedown="greekselection(); return false"
+							value="image selection" action="#{commentBean.greekclick}"
+							disabled="true" style="float:right"></h:commandButton>
+
+					</h:panelGrid>
+
+					<h:panelGrid>
+
+					</h:panelGrid>
+
+				</div>
+			</h:form>
+
+			<p:separator id="separator" style="width:350px;height:15px"></p:separator>
+
+			<div align="center">
+				<h:form>
+					<p:editor id="editor" value="#{commentBean.commentvalue}"
+						width="600" />
+
+					<h:panelGrid columns="6" style="margin-top:10px">
+						<h:commandButton id="newButton" value="new"
+							onclick="return confirm('New option disabled in this version!')" />
+						<h:commandButton id="deleteButton" value="delete"
+							onclick="return confirm('Delete option disabled in this version!')"
+							disabled="#{empty commentBean.selectedComment}" />
+						<h:selectOneMenu value="#{commentBean.commenttype}">
+							<f:selectItems value="#{commentBean.options}"></f:selectItems>
+						</h:selectOneMenu>
+						<h:commandButton id="submitButton" value="submit"
+							onclick="return confirm('Submit option disabled in this version!')" />
+						<h:commandButton id="clearButton" value="clear"
+							onclick="return confirm('Clear option disabled in this version!')" />
+					</h:panelGrid>
+					<!-- 
+    			<p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade">
+        			<h:outputText id="display" value="#{commentBean.value}" escape="false" />
+    			</p:dialog>
+    			 -->
+				</h:form>
+			</div>
+			<!--<h:outputText value="centro" />-->
+		</p:layoutUnit>
+
+	</p:layout>
+	<script type="text/javascript">
+			$(document).ready(dynamic_zoom());
+</script>
+</h:body>
+
+</html>
