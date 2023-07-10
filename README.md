@@ -1,5 +1,5 @@
 # Saussure_Wapp
-Piattaforma web di filologica computazionale sviluppata nell'ambito del progetto **PRIN2008** "_Per un’edizione digitale dei manoscritti di Ferdinand de Saussure_".
+Piattaforma web di filologia computazionale sviluppata nell'ambito del progetto **PRIN2008** "_Per un’edizione digitale dei manoscritti di Ferdinand de Saussure_".
 
 Sito di progetto: [www.ilc.cnr.it/progetti/saussure][1]
 
